@@ -10,19 +10,20 @@
 
     <v-main>
       <section id="hero">
-        <v-sheet class="d-flex align-center pb-16" color="grey-darken-3">
+        <v-sheet
+          class="d-flex align-center pb-16"
+          color="grey-darken-3"
+        >
           <v-container class="text-center">
             <v-responsive class="mx-auto">
               <h3 class="text-h3">Try Ribbon's all new features</h3>
 
               <p class="mt-4 text-medium-emphasis">
-                Our all-in-one platform gives you the banking, accounting,
-                fundraising, and organizational tools you need to build a
-                successful charity under the umbrella of your fiscal sponsor.
+                Our all-in-one platform gives you the banking, accounting, fundraising, and organizational tools you need to build a successful charity under the umbrella of your fiscal sponsor.
               </p>
             </v-responsive>
           </v-container>
-        </v-sheet>
+          </v-sheet>
       </section>
 
       <v-sheet>
@@ -49,12 +50,15 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="item in donors.data" :key="item.id">
+                    <tr
+                      v-for="item in donors.data"
+                      :key="item.id"
+                    >
                       <td>{{ item.full_name }}</td>
                       <td>{{ item.email }}</td>
                       <td>{{ item.total_donations }}</td>
-                      <td>{{ item.first_donation }}</td>
-                    </tr>
+                      <td>{{ item.first_donation | myDate}}</td>
+                      </tr>
                   </tbody>
                 </table>
               </v-col>
@@ -63,7 +67,10 @@
         </section>
       </v-sheet>
 
-      <v-sheet class="py-16" color="#1818181a">
+      <v-sheet
+        class="py-16"
+        color="#1818181a"
+      >
         <section id="grid">
           <v-container>
             <v-row justify="space-between">
@@ -76,7 +83,10 @@
                   </p>
                 </v-responsive>
               </v-col>
-              <v-sheet width="400" class="mx-auto">
+              <v-sheet
+                width="400"
+                class="mx-auto"
+              >
                 <v-form
                   v-model="valid"
                   validate-on="submit"
@@ -87,31 +97,36 @@
                     :rules="messageRules"
                     label="Message"
                   ></v-textarea>
-                  <v-text-field
-                    v-model="email"
-                    :rules="emailRules"
-                    label="Email"
-                  ></v-text-field>
-                  <v-text-field
-                    v-model="donor_id"
-                    label="Donor Id"
-                  ></v-text-field>
-                  <v-btn type="submit" block class="mt-2">Send</v-btn>
-                </v-form>
-              </v-sheet>
+                    <v-text-field
+                      v-model="email"
+                      :rules="emailRules"
+                      label="Email"
+                    ></v-text-field>
+                      <v-text-field
+                        v-model="donor_id"
+                        label="Donor Id"
+                      ></v-text-field>
+                        <v-btn
+                          type="submit"
+                          block
+                          class="mt-2"
+                        >Send</v-btn>
+                          </v-form>
+                          </v-sheet>
             </v-row>
           </v-container>
         </section>
-      </v-sheet>
+        </v-sheet>
     </v-main>
 
     <v-footer>
-      <v-container
-        class="text-overline d-flex align-center justify-space-between"
-      >
+      <v-container class="text-overline d-flex align-center justify-space-between">
         <div>Copyright &copy; 2023 Flourish Change Inc dba Ribbon</div>
 
-        <v-icon icon="mdi-bank" size="x-large" />
+        <v-icon
+          icon="mdi-bank"
+          size="x-large"
+        />
       </v-container>
     </v-footer>
   </v-app>
@@ -130,30 +145,34 @@ export default {
       donor_id: "",
       message: "",
       emailRules: [
-        (value) => {
+        value => {
           if (value) return true;
 
           return "E-mail is required.";
-        },
+        }
       ],
       messageRules: [
-        (value) => {
+        value => {
           if (value) return true;
 
           return "Message is required.";
-        },
-      ],
+        }
+      ]
     };
   },
   mounted() {
     axios
       .get("https://interview.ribbon.giving/api/donors")
-      .then((response) => (this.donors = response.data));
+      .then(
+        response => (
+          (this.donors = response.data), console.log("DONORS: ", response.data)
+        )
+      );
   },
   methods: {
     async submit() {
       // Send message to server.
-    },
-  },
+    }
+  }
 };
 </script>
