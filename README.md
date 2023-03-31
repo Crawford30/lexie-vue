@@ -11,5 +11,3 @@ You should implement features using the vuetify library.
 ## What not to do
 
 - Open a pull request to the main repo
-
-# lexie-vue
