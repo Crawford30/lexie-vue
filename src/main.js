@@ -4,13 +4,12 @@ import Vue from "vue";
 import store from "./store";
 
 //import moment
-import moment from 'moment';
+import moment from "moment";
 
 //Register date filter as a global function
-Vue.filter('myDate', function (created) {
-  return moment(created).format('D MMM YYYY');
+Vue.filter("myDate", function (created) {
+  return moment(created).format("D MMM YYYY");
 });
-
 
 Vue.config.productionTip = false;
 
