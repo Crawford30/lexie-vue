@@ -38,6 +38,19 @@
                 <p class="mt-3">See all those that have given in one place!</p>
               </v-col>
             </v-row>
+
+            <v-row justify="space-between">
+              <v-col
+                class="text-right"
+                cols="col-12"
+              >
+                <v-btn
+                  class="new-form-btn"
+                  depressed
+                > NEW FORM </v-btn>
+                  </v-col>
+            </v-row>
+
             <v-row>
               <v-col v-if="donors">
                 <v-data-table
@@ -53,7 +66,7 @@
                     <tr class="hover-bg">
                       <td>{{ item.full_name }}</td>
                       <td>{{ item.email }}</td>
-                      <td>{{ item.first_donation | myDate}}</td>
+                      <td>{{ item.first_donation | myDate }}</td>
                       <td>{{ item.total_donations }}</td>
                     </tr>
                   </template>
@@ -227,14 +240,6 @@ export default {
 </script>
 
 <style scoped>
-/* .elevation-1 tr th:first-of-type,
-td:first-of-type {
-  background-color: blue;
-}
-.v-data-table-header {
-  background-color: #00f !important;
-} */
-
 ::v-deep .v-data-table-header {
   color: rgba(58, 58, 64, 0.87);
   background-color: rgba(58, 58, 64, 0.05);
@@ -245,6 +250,11 @@ td:first-of-type {
 }
 .hover-bg:hover {
   background: rgba(58, 58, 64, 0.03) !important;
+}
+
+.new-form-btn {
+  background: #00754a !important;
+  color: #fff;
 }
 
 tbody {
