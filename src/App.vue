@@ -141,11 +141,28 @@
                     :rules="messageRules"
                     label="Message"
                   ></v-textarea>
-                  <v-text-field
+                  <v-col v-if="donors">
+                    <v-layout row wrap>
+                      <v-flex md12 xs12>
+                        <v-select
+                          label="Email"
+                          v-model="email"
+                          :rules="emailRules"
+                          :items="donors.data"
+                          :closeOnSelect="true"
+                          @change="handleEmailSelect"
+                          attach
+                          item-text="email"
+                          item-value="id"
+                        ></v-select>
+                      </v-flex>
+                    </v-layout>
+                  </v-col>
+                  <!-- <v-text-field
                     v-model="email"
                     :rules="emailRules"
                     label="Email"
-                  ></v-text-field>
+                  ></v-text-field> -->
                   <v-text-field
                     v-model="donor_id"
                     label="Donor Id"
@@ -235,6 +252,11 @@ export default {
   methods: {
     async submit() {
       // Send message to server.
+    },
+
+    handleEmailSelect(e) {
+      console.log("SLECTED DONOR ID", e);
+      this.donor_id = e;
     },
 
     customFilter(items, search, filter) {
