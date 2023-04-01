@@ -10,19 +10,20 @@
 
     <v-main>
       <section id="hero">
-        <v-sheet class="d-flex align-center pb-16" color="grey-darken-3">
+        <v-sheet
+          class="d-flex align-center pb-16"
+          color="grey-darken-3"
+        >
           <v-container class="text-center">
             <v-responsive class="mx-auto">
               <h3 class="text-h3">Try Ribbon's all new features</h3>
 
               <p class="mt-4 text-medium-emphasis">
-                Our all-in-one platform gives you the banking, accounting,
-                fundraising, and organizational tools you need to build a
-                successful charity under the umbrella of your fiscal sponsor.
+                Our all-in-one platform gives you the banking, accounting, fundraising, and organizational tools you need to build a successful charity under the umbrella of your fiscal sponsor.
               </p>
             </v-responsive>
           </v-container>
-        </v-sheet>
+          </v-sheet>
       </section>
 
       <v-sheet>
@@ -37,15 +38,28 @@
                 <p class="mt-3">See all those that have given in one place!</p>
               </v-col>
               <v-row justify="space-between">
-                <v-col class="text-right" cols="col-12">
-                  <v-btn class="new-form-btn" depressed> NEW FORM </v-btn>
-                </v-col>
+                <v-col
+                  class="text-right"
+                  cols="col-12"
+                >
+                  <v-btn
+                    class="new-form-btn"
+                    depressed
+                  > NEW FORM </v-btn>
+                    </v-col>
               </v-row>
             </v-row>
             <!-- <v-card color="grey-lighten-3"> -->
             <v-row justify="space-between">
-              <v-col class="text-right" cols="col-12">
-                <v-card color="grey-lighten-3" max-width="400" height="80">
+              <v-col
+                class="text-right"
+                cols="col-12"
+              >
+                <v-card
+                  color="grey-lighten-3"
+                  max-width="400"
+                  height="80"
+                >
                   <v-card-text>
                     <v-text-field
                       v-model="search"
@@ -57,8 +71,8 @@
                       hide-details
                     ></v-text-field>
                   </v-card-text>
-                </v-card>
-              </v-col>
+                  </v-card>
+                  </v-col>
             </v-row>
             <v-row>
               <v-col v-if="donors">
@@ -87,9 +101,9 @@
                   <template v-slot:header.name="{ header }">
                     {{ header.text.toUpperCase() }}
                   </template>
-                </v-data-table>
+                  </v-data-table>
 
-                <!-- <table v-if="donors">
+                  <!-- <table v-if="donors">
                   <thead>
                     <tr>
                       <th class="text-left">Name</th>
@@ -117,7 +131,10 @@
         </section>
       </v-sheet>
 
-      <v-sheet class="py-16" color="#1818181a">
+      <v-sheet
+        class="py-16"
+        color="#1818181a"
+      >
         <section id="grid">
           <v-container>
             <v-row justify="space-between">
@@ -130,7 +147,10 @@
                   </p>
                 </v-responsive>
               </v-col>
-              <v-sheet width="400" class="mx-auto">
+              <v-sheet
+                width="400"
+                class="mx-auto"
+              >
                 <v-form
                   v-model="valid"
                   validate-on="submit"
@@ -141,49 +161,60 @@
                     :rules="messageRules"
                     label="Message"
                   ></v-textarea>
-                  <v-col v-if="donors">
-                    <v-layout row wrap>
-                      <v-flex md12 xs12>
-                        <v-select
-                          label="Email"
-                          v-model="email"
-                          :rules="emailRules"
-                          :items="donors.data"
-                          :closeOnSelect="true"
-                          return-object
-                          @change="handleEmailSelect"
-                          attach
-                          item-text="email"
-                          item-value="id"
-                        ></v-select>
-                      </v-flex>
-                    </v-layout>
-                  </v-col>
-                  <!-- <v-text-field
+                    <v-col v-if="donors">
+                      <v-layout
+                        row
+                        wrap
+                      >
+                        <v-flex
+                          md12
+                          xs12
+                        >
+                          <v-select
+                            label="Email"
+                            v-model="email"
+                            :rules="emailRules"
+                            :items="donors.data"
+                            :closeOnSelect="true"
+                            return-object
+                            @change="handleEmailSelect"
+                            attach
+                            item-text="email"
+                            item-value="id"
+                          ></v-select>
+                            </v-flex>
+                            </v-layout>
+                    </v-col>
+                    <!-- <v-text-field
                     v-model="email"
                     :rules="emailRules"
                     label="Email"
                   ></v-text-field> -->
-                  <v-text-field
-                    v-model="donor_id"
-                    label="Donor Id"
-                  ></v-text-field>
-                  <v-btn type="submit" block class="mt-2">Send</v-btn>
-                </v-form>
-              </v-sheet>
+                    <v-text-field
+                      v-model="donor_id"
+                      label="Donor Id"
+                    ></v-text-field>
+                      <v-btn
+                        type="submit"
+                        block
+                        class="mt-2"
+                      >Send</v-btn>
+                        </v-form>
+                        </v-sheet>
             </v-row>
           </v-container>
         </section>
-      </v-sheet>
+        </v-sheet>
     </v-main>
 
     <v-footer>
-      <v-container
-        class="text-overline d-flex align-center justify-space-between"
-      >
+      <v-container class="text-overline d-flex align-center justify-space-between">
         <div>Copyright &copy; 2023 Flourish Change Inc dba Ribbon</div>
 
-        <v-icon icon="mdi-bank" size="x-large" />
+        <v-icon
+          icon="mdi-bank"
+          size="x-large"
+        />
       </v-container>
     </v-footer>
   </v-app>
@@ -191,6 +222,7 @@
 
 <script>
 import axios from "axios";
+import Swal from "sweetalert2";
 export default {
   name: "App",
 
@@ -201,24 +233,24 @@ export default {
           text: "NAME",
           align: "start",
           value: "full_name",
-          width: "20%",
+          width: "20%"
         },
         {
           text: "EMAIL",
-          value: "email",
+          value: "email"
         },
         {
           text: "TOTAL DONATIONS",
-          value: "total_donations",
+          value: "total_donations"
         },
         {
           text: "FIRST DONATIONS",
-          value: "first_donation",
-        },
+          value: "first_donation"
+        }
       ],
       search: "",
       pagination: {
-        rowsPerPage: 5,
+        rowsPerPage: 5
       },
       donors: null,
       valid: false,
@@ -227,32 +259,45 @@ export default {
       donor_id: "",
       message: "",
       emailRules: [
-        (value) => {
+        value => {
           if (value) return true;
 
           return "E-mail is required.";
-        },
+        }
       ],
       messageRules: [
-        (value) => {
+        value => {
           if (value) return true;
 
           return "Message is required.";
-        },
-      ],
+        }
+      ]
     };
   },
   mounted() {
     axios
       .get("https://interview.ribbon.giving/api/donors")
       .then(
-        (response) => (
+        response => (
           (this.donors = response.data), console.log("DONORS: ", response.data)
         )
       );
   },
   methods: {
+    resetFormSate() {
+      this.donor_id = "";
+      this.email = "";
+      this.message = "";
+    },
     async submit() {
+      if (this.message.length < 15) {
+        Swal.fire(
+          "<p style='font-size: 14px;'>Message should be more than 15 characters</p>",
+          "",
+          "error"
+        );
+        return;
+      }
       if (this.donor_id != "" || this.donor_id != undefined) {
         let url =
           "https://interview.ribbon.giving/api/donors/" +
@@ -262,13 +307,53 @@ export default {
         let formData = {
           donor_id: this.donor_id,
           message: this.message,
-          email: this.selectedUserObject.email,
+          email: this.selectedUserObject.email
         };
 
         console.log("FORM DATA: ", formData);
-      }
 
-      // Send message to server.
+        // Send message to server.
+
+        axios({
+          method: "POST",
+          url: url,
+          data: formData,
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          }
+        })
+          .then(res => {
+            //reset states
+            this.resetFormSate();
+            Swal.fire({
+              icon: "success",
+              title: "Success",
+              html:
+                "<p class='font-size: 13px'>Donor Message Successfully Submitted</p>",
+              showConfirmButton: true,
+              allowOutsideClick: false,
+              showCloseButton: true,
+              confirmButtonText: "Ok",
+              confirmButtonColor: "#32CD32"
+            }).then(result => {
+              if (result.isConfirmed) {
+              }
+            });
+          })
+          .catch(error => {
+            console.log("ERROR: ", error);
+
+            if (error.response) {
+              Swal.fire(
+                "<p style='font-size: 14px;'>Error Occured</p>",
+                eerror.response,
+                "error"
+              );
+            }
+            this.resetFormSate();
+          });
+      }
     },
 
     handleEmailSelect(e) {
@@ -279,9 +364,9 @@ export default {
 
     customFilter(items, search, filter) {
       search = search.toString().toLowerCase();
-      return items.filter((row) => filter(row["type"], search));
-    },
-  },
+      return items.filter(row => filter(row["type"], search));
+    }
+  }
 };
 </script>
 
