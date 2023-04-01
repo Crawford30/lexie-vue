@@ -150,6 +150,7 @@
                           :rules="emailRules"
                           :items="donors.data"
                           :closeOnSelect="true"
+                          return-object
                           @change="handleEmailSelect"
                           attach
                           item-text="email"
@@ -222,6 +223,7 @@ export default {
       donors: null,
       valid: false,
       email: "",
+      selectedUserObject: {},
       donor_id: "",
       message: "",
       emailRules: [
@@ -251,12 +253,28 @@ export default {
   },
   methods: {
     async submit() {
+      if (this.donor_id != "" || this.donor_id != undefined) {
+        let url =
+          "https://interview.ribbon.giving/api/donors/" +
+          this.donor_id +
+          "/send-message";
+
+        let formData = {
+          donor_id: this.donor_id,
+          message: this.message,
+          email: this.selectedUserObject.email,
+        };
+
+        console.log("FORM DATA: ", formData);
+      }
+
       // Send message to server.
     },
 
     handleEmailSelect(e) {
-      console.log("SLECTED DONOR ID", e);
-      this.donor_id = e;
+      console.log("SLECTED DONOR Obj", e);
+      this.donor_id = e.id;
+      this.selectedUserObject = e;
     },
 
     customFilter(items, search, filter) {
