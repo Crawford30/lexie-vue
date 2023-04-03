@@ -13,3 +13,27 @@ You should implement features using the vuetify library.
 * Open a pull request to the main repo
 
 # lexie-vue
+
+Responses
+
+Issues One 
+
+1. To see the list of avaliable commands,
+type npm run 
+
+To format the code
+Type npm run format
+
+
+Here the branches for the issues:-
+
+Issues One:
+github.com/Crawford30/lexie-vue/tree/feat/code_formatting_package
+
+Issues Two:
+github.com/Crawford30/lexie-vue/tree/feat/donor_list_table
+
+Issues Three:
+github.com/Crawford30/lexie-vue/tree/feat/send_donor_message
+
+
